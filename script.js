@@ -11,8 +11,16 @@ class Application {
         this.ctx = this.canvas.getContext('2d');
 
         this.car = new Car(100, 100, 50, 50);
-        this.car.draw(this.ctx);
+
+        requestAnimationFrame(this.render.bind(this))
         
+    }
+
+    render() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.car.update();
+        this.car.draw(this.ctx);
+        requestAnimationFrame(this.render.bind(this))
     }
 }
 
